@@ -2,9 +2,9 @@
 //Controlador invocable
 namespace App\Http\Controllers;
 
-class PostController
+class PostController extends Controller
 {
-    public function __invoke()
+    public function index()
     {
         $posts = [
             ['title' => 'Post 1'],
