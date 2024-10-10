@@ -12,11 +12,11 @@ class PostController extends Controller
 
         //dd($posts);
 
-        return view('blog', compact('posts'));
+        return view('posts.index', compact('posts'));
     }
 
     public function show(Post $post)
     {
-        
+        return view('posts.show', compact('post'));
     }
 }
