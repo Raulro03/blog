@@ -31,5 +31,7 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->save();
+
+        return to_route('posts.index');
     }
 }
