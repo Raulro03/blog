@@ -1,11 +1,11 @@
 <x-layout meta-title="Create a new Post" meta-description="Create a new Post">
 
-    <h1> Create a new Post </h1>
+    <h1> {{ __('Create a new Post') }} </h1>
 
     <form method="POST" action="{{ route('posts.store') }}">
         @csrf
         <label>
-            Title<br />
+            {{ __("Title") }}<br />
             <input type="text" name="title" value="{{old('title')}}" >
             @error('title')
             <br />
@@ -15,7 +15,7 @@
         <br />
         <label>
 
-            Body <br />
+            {{ __("Body")}} <br />
             <textarea name="body">{{old("body")}}</textarea>
             @error('body')
             <br />
@@ -24,9 +24,9 @@
         </label>
         <br />
         <label>
-            <button type="submit">Send</button>
+            <button type="submit">{{__("Send")}}</button>
         </label>
 
     </form>
-    <a href="{{ route('posts.index') }}">Back</a>
+    <a href="{{ route('posts.index') }}">{{__("Back")}}</a>
 </x-layout>

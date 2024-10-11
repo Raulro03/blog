@@ -30,12 +30,8 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required',
             'body' => 'required',
-        ],
-        [
-            'title.required' => 'El campo Titulo es obligatorio',
-            'body.required' => 'El campo Contenido es obligatorio',
-        ]
-        );
+        ]);
+
 
         $post = new Post();
         $post->title = $request->input('title');
