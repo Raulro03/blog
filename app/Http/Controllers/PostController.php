@@ -48,4 +48,11 @@ class PostController extends Controller
             ->with('status', 'Post updates succesfully!');
     }
 
+    public function destroy(Post $post){
+        $post->delete();
+
+        return to_route('posts.index')
+            ->with('status', 'Post deletes succesfully!');
+    }
+
 }
