@@ -4,6 +4,7 @@
     <a href="{{ route('posts.index') }}">{{__("Back")}}</a>
     <form method="POST" action="{{ route('posts.update', $post) }}">
         @csrf
+        @method('PATCH')
         <label>
             {{ __("Title") }}<br />
             <input type="text" name="title" value="{{old('title', $post->title)}}" >
@@ -13,8 +14,8 @@
             @enderror
         </label>
         <br />
-        <label>
 
+        <label>
             {{ __("Body")}} <br />
             <textarea name="body">{{old("body",$post->body)}}</textarea>
             @error('body')
@@ -26,6 +27,7 @@
         <label>
             <button type="submit">{{__("Send")}}</button>
         </label>
-
     </form>
 </x-layout>
+
+
