@@ -6,6 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{ $metaTitle ?? "Default Title" }}</title>
     <meta name="description" content="{{ $metaDescription ?? "Default Description" }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
 </head>
@@ -17,6 +18,7 @@
     {{ $value }}
 </div>
 @endsession
+
 
 {{ $slot }}
 @isset($sidebar)
