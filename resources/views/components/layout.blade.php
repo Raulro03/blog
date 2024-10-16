@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
 
 
 </head>
-<body class="font-sans antialiased dark:bg-black dark:text-white/50">
+<body class="flex h-screen flex-col bg-slate-100 selection:bg-sky-600 selection:text-sky-50 dark:bg-slate-950">
 <x-partials.navigation/>
 
 @session('status')
@@ -20,16 +20,9 @@
 @endsession
 
 
-{{ $slot }}
-@isset($sidebar)
-
-    <div id="sidebar">
-        <h3>Sidebar</h3>
-
-        {{ $sidebar }}
-
-    </div>
-@endisset
+    <main class="flex-1 p-4">
+     {{ $slot }}
+    </main>
 </body>
 </html>
 
