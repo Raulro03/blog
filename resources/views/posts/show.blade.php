@@ -8,7 +8,8 @@
                 especificación JSON:API"
             />
         </div>--}}
-        <div
+        @auth()
+            <div
             class="flex items-center justify-center space-x-10"
         >
             <a
@@ -58,6 +59,7 @@
                 </button>
             </form>
         </div>
+        @endauth
         <div class="flex-1 space-y-3 pt-4 md:text-center">
             {{--<h3
                 class="text-sm font-semibold text-sky-500 dark:text-sky-400"
