@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{{ $metaTitle ?? "Default Title" }}</title>
-    <meta name="description" content="{{ $metaDescription ?? "Default Description" }}">
+    <title>{{ $metaTitle }}</title>
+    <meta name="description" content="{{ $metaDescription }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
 </head>
 <body class="flex h-screen flex-col bg-slate-100 selection:bg-sky-600 selection:text-sky-50 dark:bg-slate-950">
-<x-partials.navigation/>
+@include("layouts.blog-navigation")
 
 @session('status')
 <div class="bg-green-600 p-4 text-xl text-green-50 dark:bg-green-800">
@@ -20,9 +20,9 @@
 @endsession
 
 
-    <main class="flex-1 p-4">
-     {{ $slot }}
-    </main>
+<main class="flex-1 p-4">
+    {{ $slot }}
+</main>
 
 <footer class="py-10 px-4">
     <div

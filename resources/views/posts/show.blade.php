@@ -1,4 +1,4 @@
-<x-layout :meta-title="$post->title" :meta-description="$post->body">
+<x-blog-layout :meta-title="$post->title" :meta-description="$post->body">
     <article class="mx-auto flex max-w-4xl flex-col">
         {{--<div class="h-52 md:h-72 lg:h-96">
             <img
@@ -127,4 +127,4 @@
             </p>--}}
         </div>
     </article>
-</x-layout>
+</x-blog-layout>
