@@ -63,6 +63,11 @@
                             >
                                 {{ $post->body }}
                             </p>
+                            <p
+                                class="hidden text-slate-500 dark:text-slate-400 md:block"
+                            >
+                                {{ $post->published_at }}
+                            </p>
                         </div>
                         {{--<div class="flex space-x-2 p-5">
                             <img

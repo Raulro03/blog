@@ -24,6 +24,7 @@ class UpdatePostRequest extends FormRequest
         return [
             'title' => 'required|min:5|max:100',
             'body' => 'required',
+            'published_at' => 'required|date',
         ];
     }
 }

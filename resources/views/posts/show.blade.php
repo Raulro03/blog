@@ -126,5 +126,13 @@
                 Praesentium, provident accusantium.
             </p>--}}
         </div>
+        <div class="flex-1 space-y-3 pt-4 md:text-center">
+
+            <h2
+                class="text-2xl font-semibold leading-tight text-slate-800 dark:text-slate-200 md:text-4xl"
+            >
+                {{ $post->published_at }}
+            </h2>
+        </div>
     </article>
 </x-blog-layout>
