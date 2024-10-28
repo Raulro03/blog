@@ -11,12 +11,12 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'body', 'published_at'];
+    protected $fillable = ['title', 'body', 'user_id' ,'published_at'];
 
     //protected $table = 'articles'; Nombre por defecto de la tabla a buscar si la borro buscara Post en mayuscula y minuscula
 
-    /*public function user(): BelongsTo{
-        return $this->belongsTo(User::class);
-    } Relacion a la inversa*/
+    public function user(): BelongsTo{
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    } //Yo creo que esto sirve para ver desde un post el usuario que tiene
 
 }

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -33,7 +35,9 @@ class PostController extends Controller
 
     public function store(StorePostRequest $request){
 
-        Post::create($request->validated());
+        Post::create($request->validated(),
+            ['user_id' => Auth::user()->id,]
+            );
 
         return to_route('posts.index')
             ->with('status', 'Post creates succesfully!');
@@ -57,6 +61,18 @@ class PostController extends Controller
 
         return to_route('posts.index')
             ->with('status', 'Post deletes succesfully!');
+    }
+
+    public function myPosts()
+    {
+
+        $user = Auth::user(); //o auth()->user();
+
+        $posts = User::find($user->id)->posts()->get();
+
+        //dd($posts);
+
+        return view('posts.my-posts', compact('posts'));
     }
 
 }

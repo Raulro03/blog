@@ -27,6 +27,14 @@
                         </svg>
                     </a>
                 </div>
+            <div class="flex items-center justify-left">
+                <a
+                    href="{{ route('posts.my-posts') }}"
+                    class="group rounded-full bg-sky-600 p-2 text-sky-100 shadow-lg duration-300 hover:bg-sky-700 active:bg-sky-800"
+                >
+                    <button>Mis Posts</button>
+                </a>
+            </div>
             @endauth
             <div
                 class="mx-auto mt-8 grid max-w-6xl gap-4 md:grid-cols-2 lg:grid-cols-3"
