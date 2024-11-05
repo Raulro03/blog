@@ -25,9 +25,5 @@
                   class="block w-full mt-1"
     />
     <x-input-error :messages="$errors->get('published_at')" class="mt-2" />
-   <!-- <x              id="user_id"
-                  name="user_id"
-                  value=" //old('published_at', $post->published_at) }}"
-                  class="block w-full mt-1"
-    />-->
+    <!--<input type="hidden" name="user_id" value=" auth()->id() "> Mal uso ya que los clientes pueden ver nuestra id-->
 </div>
