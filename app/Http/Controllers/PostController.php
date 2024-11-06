@@ -74,9 +74,15 @@ class PostController extends Controller
     public function myPosts()
     {
 
-        $user = Auth::user(); //o auth()->user();
+        $user = Auth::user()->id; //o auth()->user();
 
-        $posts = User::find($user->id)->posts()->get();
+        $posts = User::find($user)->posts()->get();
+        //De esto modo buscamos los posts usando las relaciones otro modo seria el siguiente
+
+        /*
+         *   $posts = Post::where('user_id', $user)->get(); De este modo no usamos las relaciones si no que hacemos
+         * una consulta normal pasandole el user_id
+         * */
 
         //dd($posts);
 

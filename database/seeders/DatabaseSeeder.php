@@ -20,6 +20,10 @@ class DatabaseSeeder extends Seeder
 
         //Tambien se puede hacer con el each
 
+        /*User::factory(5)->create()->each(function ($user) {
+            Post::factory()->count(10)->create(['user_id' => $user->id]);
+        });*/
+
         /*User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
