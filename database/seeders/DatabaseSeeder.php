@@ -16,8 +16,10 @@ class DatabaseSeeder extends Seeder
     {
 
 
-        User::factory(5)->create();
-        Post::factory(10)->create();
+        User::factory(5)->has(Post::factory()->count(10))->create();
+
+        //Tambien se puede hacer con el each
+
         /*User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
