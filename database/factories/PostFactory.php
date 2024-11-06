@@ -18,7 +18,7 @@ class PostFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(),
-            'description' => $this->faker->paragraphs(3, true),
+            'description' => $this->faker->paragraph(),
         ];
     }
 }
