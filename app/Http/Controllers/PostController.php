@@ -46,6 +46,8 @@ class PostController extends Controller
             ['user_id' => auth()->user()->id],
             ));
 
+        //auth()->user()->posts()->create($request->validated());
+
 
         return to_route('posts.index')
             ->with('status', 'Post creates succesfully!');
