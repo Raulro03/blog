@@ -36,4 +36,7 @@
             @endforeach
         </div>
     </div>
+    <div class="d-flex mt-3 px-6 justify-content-center">
+        {{ $posts->links() }}
+    </div>
 </x-blog-layout>

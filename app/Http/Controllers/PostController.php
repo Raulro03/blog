@@ -17,7 +17,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::query()->where('published_at', '<=' , now())->get();
+        $posts = Post::query()->where('published_at', '<=' , now())->paginate(5);
 
         //dd($posts);
 
@@ -42,11 +42,11 @@ class PostController extends Controller
         Post::create($data);*/
 
 
-        Post::create(array_merge($request->validated(),
+        /*Post::create(array_merge($request->validated(),
             ['user_id' => auth()->user()->id],
-            ));
+            ));*/
 
-        //auth()->user()->posts()->create($request->validated());
+        auth()->user()->posts()->create($request->validated());
 
 
         return to_route('posts.index')
@@ -76,7 +76,7 @@ class PostController extends Controller
     public function myPosts()
     {
 
-        $posts = auth()->user()->posts;
+        $posts = auth()->user()->posts()->paginate(5);
 
         //$user = Auth::user()->id; //o auth()->user();
 
