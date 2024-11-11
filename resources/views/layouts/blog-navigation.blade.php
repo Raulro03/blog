@@ -245,8 +245,8 @@
                             <button>
                                 <img
                                     class="h-6 w-6 rounded-full"
-                                    src="https://ui-avatars.com/api?name=Jorge+Garcia"
-                                    alt="Jorge García"
+                                    src="https://ui-avatars.com/api"
+                                    alt="No Logged"
                                 />
                             </button>
 
@@ -272,8 +272,8 @@
                         <button>
                             <img
                                 class="h-6 w-6 rounded-full"
-                                src="https://ui-avatars.com/api?name=Jorge+Garcia"
-                                alt="Jorge García"
+                                src="https://ui-avatars.com/api?name={{ Auth::user()->name . " " . Auth::user()->last_name }}"
+                                alt="{{ Auth::user()->name . " " . Auth::user()->last_name }}"
                             />
                         </button>
 
