@@ -16,9 +16,11 @@ class PostController extends Controller
         $this->middleware('auth')->except(['index', 'show']);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::query()->where('published_at', '<=' , now())->paginate(5);
+        $order = $request->get('order', 'asc');
+
+        $posts = Post::query()->where('published_at', '<=' , now())->orderBy('published_at', $order)->paginate(5);
 
         //dd($posts);
 
