@@ -8,6 +8,9 @@ Route::view('/', 'welcome')->name('home');
 Route::view('contacto', 'contact')->name('contact');
 
     Route::get('blog/my-posts', [PostController::class, 'myPosts'])->name('posts.my-posts');
+        /*->middleware(function ($request, $next) {
+            return (new CheckUserRole)->handle($request, $next);
+        }); //Esto es para middleware anonimos que no estan registrados en el Kernel PHP*/
 
 Route::resource('blog', PostController::class)
     ->names('posts')

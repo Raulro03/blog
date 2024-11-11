@@ -245,7 +245,7 @@
                             <button>
                                 <img
                                     class="h-6 w-6 rounded-full"
-                                    src="https://ui-avatars.com/api"
+                                    src="{{ asset('images/icono-no-logued.jpg') }}"
                                     alt="No Logged"
                                 />
                             </button>
