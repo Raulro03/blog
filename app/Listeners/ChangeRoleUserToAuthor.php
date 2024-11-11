@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Listeners;
+
+use App\Events\PostCreated;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+
+class ChangeRoleUserToAuthor
+{
+    /**
+     * Create the event listener.
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * Handle the event.
+     */
+    public function handle(PostCreated $event)
+    {
+        $user = $event->user;
+        if ($user->role !== 'ROLE_AUTHOR' || $user->role !== 'ROLE_ADMIN') {
+            $user->role = 'ROLE_AUTHOR';
+            $user->save();
+        }
+    }
+}

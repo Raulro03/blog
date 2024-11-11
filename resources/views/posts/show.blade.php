@@ -8,7 +8,7 @@
                 especificación JSON:API"
             />
         </div>--}}
-        @if(Auth::user()->id == $post->user_id || Auth::user()->role == 'ROLE_ADMIN')
+        @if(Auth::user()->role == 'ROLE_ADMIN' || Auth::user()->id == $post->user_id && Auth::user()->role == 'ROLE_AUTHOR')
             <div
             class="flex items-center justify-center space-x-10"
         >

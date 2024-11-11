@@ -2,6 +2,7 @@
 //Controlador invocable
 namespace App\Http\Controllers;
 
+use App\Events\PostCreated;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
@@ -48,6 +49,7 @@ class PostController extends Controller
 
         auth()->user()->posts()->create($request->validated());
 
+        event(new PostCreated(auth()->user()));
 
         return to_route('posts.index')
             ->with('status', 'Post creates succesfully!');
