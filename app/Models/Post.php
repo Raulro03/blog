@@ -13,7 +13,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'body', 'user_id' ,'published_at'];
+    protected $fillable = ['title', 'body', 'user_id' , 'category_id' ,'published_at'];
 
     //protected $table = 'articles'; Nombre por defecto de la tabla a buscar si la borro buscara Post en mayuscula y minuscula
 
