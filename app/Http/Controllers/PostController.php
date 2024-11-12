@@ -18,9 +18,26 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-        $order = $request->get('order', 'asc');
+        $order = $request->get('order');
 
-        $posts = Post::query()->where('published_at', '<=' , now())->orderBy('published_at', $order)->paginate(5);
+        $search = trim($request->get('search'));
+
+        if ($order == 'asc' || $order == 'desc') {
+            if (!empty($search)) {
+                $posts = Post::query()
+                    ->where('published_at', '<=', now())
+                    ->where('search', 'like', "%$search%") //busca algo que contenga el search
+                    ->orderBy('published_at', $order)
+                    ->paginate(9);
+            } else {
+                // Si no hay título, solo aplica el orden
+                $posts = Post::query()
+                    ->where('published_at', '<=', now())
+                    ->orderBy('published_at', $order)
+                    ->paginate(9);
+            }
+
+        }
 
         //dd($posts);
 

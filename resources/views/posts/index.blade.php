@@ -40,10 +40,17 @@
             <div class="mt-4">
                 <label class=" text-xl font-semibold leading-tight text-slate-800 dark:text-slate-200" for="order">Ordenar por fecha de publicación:</label>
                 <select class="rounded-2xl bg-sky-600 p-2 text-sky-100 " name="order" id="order" onchange="this.form.submit()">
+                    <option value="" {{ request('order') == '' ? 'selected' : '' }}>Sin Ordernar</option>
                     <option value="desc" {{ request('order') == 'desc' ? 'selected' : '' }}>Más recientes primero</option>
                     <option value="asc" {{ request('order') == 'asc' ? 'selected' : '' }}>Más antiguos primero</option>
                 </select>
             </div>
+        </form>
+
+        <form class="mt-4" action="{{ route('posts.index') }}" method="GET">
+            <p class=" text-xl font-semibold leading-tight text-slate-800 dark:text-slate-200 float-left">Dime el titulo del post: </p>
+            <x-text-input name="search" id="search" value={{ request('search') }}></x-text-input>
+            <button class="rounded-2xl bg-sky-600 p-2 text-sky-100 " type="submit" onclick="this.form.submit()">Buscar Post</button>
         </form>
             <div
                 class="mx-auto mt-8 grid max-w-6xl gap-4 md:grid-cols-2 lg:grid-cols-3"
