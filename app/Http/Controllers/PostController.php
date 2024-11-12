@@ -18,19 +18,17 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-//        $order = $request->get('order');
+        $order = $request->get('order');
 
-        //$search = trim($request->get('search'));
+        $search = $request->get('search');
 
-
-
-        /*if ($order == 'asc' || $order == 'desc') {
+        if ($order == 'asc' || $order == 'desc') {
             if (!empty($search)) {
                 $posts = Post::query()
-                    ->where('published_at', '<=', now())
-                    ->where('search', 'like', "%$search%") //busca algo que contenga el search
-                    ->orderBy('published_at', $order)
-                    ->paginate(9);
+                        ->where('published_at', '<=', now())
+                        ->where('title', 'like', "%$search%") //busca algo que contenga el search
+                        ->orderBy('published_at', $order)
+                        ->paginate(9);
             } else {
                 // Si no hay título, solo aplica el orden
                 $posts = Post::query()
@@ -40,10 +38,11 @@ class PostController extends Controller
             }
 
         } else {
+
             if (!empty($search)) {
                 $posts = Post::query()
                     ->where('published_at', '<=', now())
-                    ->where('search', 'like', "%$search%")
+                    ->where('title', 'like', "%$search%")
                     ->paginate(9);
 
             } else {
@@ -52,9 +51,7 @@ class PostController extends Controller
                     ->where('published_at', '<=', now())
                     ->paginate(9);
             }
-        }*/
-
-        $posts = Post::query()->where('published_at', '<=' , now())->paginate(5);
+        }
 
         //dd($posts);
 
