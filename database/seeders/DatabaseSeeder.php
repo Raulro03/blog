@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -15,7 +16,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        User::factory(5)->has(Post::factory()->count(10))->create();
+        //User::factory(5)->has(Post::factory()->count(10))->create();
+        Category::factory(5)->has(Post::factory()->count(2))->create();
 
         //Tambien se puede hacer con el each
 
