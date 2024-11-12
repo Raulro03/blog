@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\PostCreated;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,9 +21,13 @@ class PostController extends Controller
     {
         $order = $request->get('order');
 
+        $categories = Category::all();
+
         $search = $request->get('search');
 
-        if ($order == 'asc' || $order == 'desc') {
+        dd($search, $categories);
+
+       /* if ($order == 'asc' || $order == 'desc') {
             if (!empty($search)) {
                 $posts = Post::query()
                         ->where('published_at', '<=', now())
@@ -55,7 +60,7 @@ class PostController extends Controller
 
         //dd($posts);
 
-        return view('posts.index', compact('posts'));
+        return view('posts.index', compact('posts', 'categories'));*/
     }
 
     public function show(Post $post)

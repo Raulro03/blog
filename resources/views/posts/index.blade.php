@@ -36,6 +36,8 @@
                 </a>
             </div>
             @endauth
+
+        <!-- Formulario para el order en el que se muestra segun su publicacion -->
         <form class="mt-4" action="{{ route('posts.index') }}" method="GET">
 
                 <label class=" text-xl font-semibold leading-tight text-slate-800 dark:text-slate-200" for="order">Ordenar por fecha de publicación:</label>
@@ -48,14 +50,13 @@
             <input type="hidden" name="search" value="{{ request('search') }}">
         </form>
 
-       <form class="mt-4" action="{{ route('posts.index') }}" method="GET">
+        <form class="mt-4" action="{{ route('posts.index') }}" method="GET">
+            <!-- Formulario para buscar por titulo -->
             <p class=" text-xl font-semibold leading-tight text-slate-800 dark:text-slate-200 float-left">Dime el titulo del post: </p>
             <x-text-input name="search" id="search" value="{{ request('search') }}" ></x-text-input>
 
-           <!--Para mantener la opcion de order-->
-           <input type="hidden" name="order" value="{{ request('order') }}">
-
-            <button class="rounded-2xl bg-sky-600 p-2 text-sky-100 " type="submit" onclick="this.form.submit()">Buscar Post</button>
+            <!--Para mantener la opcion de order-->
+            <input type="hidden" name="order" value="{{ request('order') }}">
         </form>
 
             <div
