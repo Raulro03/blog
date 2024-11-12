@@ -18,11 +18,13 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-        $order = $request->get('order');
+//        $order = $request->get('order');
 
-        $search = trim($request->get('search'));
+        //$search = trim($request->get('search'));
 
-        if ($order == 'asc' || $order == 'desc') {
+
+
+        /*if ($order == 'asc' || $order == 'desc') {
             if (!empty($search)) {
                 $posts = Post::query()
                     ->where('published_at', '<=', now())
@@ -37,7 +39,22 @@ class PostController extends Controller
                     ->paginate(9);
             }
 
-        }
+        } else {
+            if (!empty($search)) {
+                $posts = Post::query()
+                    ->where('published_at', '<=', now())
+                    ->where('search', 'like', "%$search%")
+                    ->paginate(9);
+
+            } else {
+                // Sin filtro ni orden, simplemente muestra los posts
+                $posts = Post::query()
+                    ->where('published_at', '<=', now())
+                    ->paginate(9);
+            }
+        }*/
+
+        $posts = Post::query()->where('published_at', '<=' , now())->paginate(5);
 
         //dd($posts);
 

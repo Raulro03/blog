@@ -47,14 +47,15 @@
             </div>
         </form>
 
-        <form class="mt-4" action="{{ route('posts.index') }}" method="GET">
+       <!-- <form class="mt-4" action="{ route('posts.index') }" method="GET">
             <p class=" text-xl font-semibold leading-tight text-slate-800 dark:text-slate-200 float-left">Dime el titulo del post: </p>
-            <x-text-input name="search" id="search" value={{ request('search') }}></x-text-input>
+            <x-text-input name="search" id="search" value={ request('search') } ></x-text-input>
             <button class="rounded-2xl bg-sky-600 p-2 text-sky-100 " type="submit" onclick="this.form.submit()">Buscar Post</button>
-        </form>
+        </form>-->
             <div
                 class="mx-auto mt-8 grid max-w-6xl gap-4 md:grid-cols-2 lg:grid-cols-3"
             >
+
                 @foreach($posts as $post)
                     <article
                         class="flex flex-col overflow-hidden rounded bg-white shadow dark:bg-slate-900"
@@ -133,4 +134,5 @@
     <div class="d-flex mt-3 px-6 justify-content-center">
         {{ $posts->links() }}
     </div>
+
 </x-blog-layout>
