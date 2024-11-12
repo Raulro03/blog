@@ -16,8 +16,22 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        //User::factory(5)->has(Post::factory()->count(10))->create();
-        Category::factory(5)->has(Post::factory()->count(2))->create();
+        /*$categories = ;
+
+        // Paso 2: Crear 5 usuarios
+        User::factory(5)->create()->each(function ($user) use ($categories) {
+            // Para cada usuario, crear 2 posts
+            Post::factory(2)->create([
+                'user_id' => $user->id, // Asignar el post al usuario actual
+                'category_id' => $categories->random()->id, // Asignar una categoría aleatoria al post
+            ]);
+        });*/
+
+        Category::factory(5)->create();
+
+        User::factory(5)->has(Post::factory()->count(10))->create();
+
+        //Category::factory(5)->has(Post::factory()->count(2))->create();
 
         //Tambien se puede hacer con el each
 

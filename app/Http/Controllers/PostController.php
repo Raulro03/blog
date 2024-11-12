@@ -21,13 +21,11 @@ class PostController extends Controller
     {
         $order = $request->get('order');
 
-        $categories = Category::all();
+        //$categories = Category::all();
 
         $search = $request->get('search');
 
-        dd($search, $categories);
-
-       /* if ($order == 'asc' || $order == 'desc') {
+       if ($order == 'asc' || $order == 'desc') {
             if (!empty($search)) {
                 $posts = Post::query()
                         ->where('published_at', '<=', now())
@@ -60,7 +58,7 @@ class PostController extends Controller
 
         //dd($posts);
 
-        return view('posts.index', compact('posts', 'categories'));*/
+        return view('posts.index', compact('posts'));
     }
 
     public function show(Post $post)
