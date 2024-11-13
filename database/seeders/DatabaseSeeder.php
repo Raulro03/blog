@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -16,6 +17,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $user = User::factory(5)->create();
+
+        $comments = Comment::factory(5)->create();
 
         $categories = Category::factory(5)->create();
 

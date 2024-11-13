@@ -108,7 +108,9 @@ class PostController extends Controller
     }
     public function create()
     {
-        return view('posts.create', ['post' => new Post()]);
+        $categories = Category::all();
+
+        return view('posts.create', ['post' => new Post()], compact('categories'));
     }
 
     public function store(StorePostRequest $request){
