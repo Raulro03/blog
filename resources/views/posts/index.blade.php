@@ -48,16 +48,35 @@
                 </select>
             <!--Para mantener la opcion de search-->
             <input type="hidden" name="search" value="{{ request('search') }}">
+            <input type="hidden" name="category" value="{{request("category")}}">
         </form>
 
-        <form class="mt-4" action="{{ route('posts.index') }}" method="GET">
+        <form class="mt-4 float-left" action="{{ route('posts.index') }}" method="GET">
             <!-- Formulario para buscar por titulo -->
             <p class=" text-xl font-semibold leading-tight text-slate-800 dark:text-slate-200 float-left">Dime el titulo del post: </p>
             <x-text-input name="search" id="search" value="{{ request('search') }}" ></x-text-input>
 
             <!--Para mantener la opcion de order-->
             <input type="hidden" name="order" value="{{ request('order') }}">
+            <input type="hidden" name="category" value="{{request("category")}}">
+
+            <button type="submit" class="rounded-2xl bg-sky-600 p-2 text-sky-100 ml-2">Buscar</button>
         </form>
+
+        <form class="mt-4 text-right" action="{{ route('posts.index') }}" method="GET">
+
+            <label class=" text-xl font-semibold leading-tight text-slate-800 dark:text-slate-200" for="category">Categorias:</label>
+            <select class="rounded-2xl bg-sky-600 p-2 text-sky-100 " name="category" id="category" onchange="this.form.submit()">
+                <option value="" {{ request('category') == '' ? 'selected' : '' }}>Sin Ordernar</option>
+                @foreach($categories as $category)
+                <option value="{{$category->id}}" {{ request('category') == $category->id ? "selected" : "" }}>{{$category->name}}</option>
+                @endforeach
+            </select>
+            <!--Para mantener la opcion de search-->
+            <input type="hidden" name="search" value="{{ request('search') }}">
+            <input type="hidden" name="order" value="{{ request('order') }}">
+        </form>
+
 
             <div
                 class="mx-auto mt-8 grid max-w-6xl gap-4 md:grid-cols-2 lg:grid-cols-3"

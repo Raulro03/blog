@@ -92,7 +92,7 @@
             </div>
         </div>--}}
         <div
-            class="prose prose-slate mx-auto mt-6 dark:prose-invert lg:prose-xl"
+            class="prose prose-slate mx-auto mt-6 dark:text-slate-200 prose-invert lg:prose-xl"
         >
             <p>
                 {{ $post->body }}

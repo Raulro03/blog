@@ -19,46 +19,87 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-        $order = $request->get('order');
+        $categories = Category::all();
 
-        //$categories = Category::all();
+        $order = $request->get('order');
 
         $search = $request->get('search');
 
+        $category = $request->get('category');
+
        if ($order == 'asc' || $order == 'desc') {
-            if (!empty($search)) {
-                $posts = Post::query()
+            if ($category == "") {
+                if ( !empty($search) ) {
+                    $posts = Post::query()
                         ->where('published_at', '<=', now())
                         ->where('title', 'like', "%$search%") //busca algo que contenga el search
                         ->orderBy('published_at', $order)
                         ->paginate(9);
+                } else {
+                    $posts = Post::query()
+                        ->where('published_at', '<=', now())
+                        ->orderBy('published_at', $order)
+                        ->paginate(9);
+                }
+
             } else {
-                // Si no hay título, solo aplica el orden
-                $posts = Post::query()
-                    ->where('published_at', '<=', now())
-                    ->orderBy('published_at', $order)
-                    ->paginate(9);
+
+                if ( !empty($search) ) {
+                    // Si no hay título, solo aplica el orden
+                    $posts = Post::query()
+                        ->where('published_at', '<=', now())
+                        ->where('title', 'like', "%$search%")
+                        ->where('category_id', '=', $category )
+                        ->orderBy('published_at', $order)
+                        ->paginate(9);
+                } else {
+                    // Si no hay título, solo aplica el orden
+                    $posts = Post::query()
+                        ->where('published_at', '<=', now())
+                        ->where('category_id', '=', $category )
+                        ->orderBy('published_at', $order)
+                        ->paginate(9);
+                }
+
             }
 
         } else {
 
-            if (!empty($search)) {
-                $posts = Post::query()
-                    ->where('published_at', '<=', now())
-                    ->where('title', 'like', "%$search%")
-                    ->paginate(9);
+           if ($category == "") {
+               if ( !empty($search) ) {
+                   $posts = Post::query()
+                       ->where('published_at', '<=', now())
+                       ->where('title', 'like', "%$search%") //busca algo que contenga el search
+                       ->paginate(9);
+               } else {
+                   $posts = Post::query()
+                       ->where('published_at', '<=', now())
+                       ->paginate(9);
+               }
 
-            } else {
-                // Sin filtro ni orden, simplemente muestra los posts
-                $posts = Post::query()
-                    ->where('published_at', '<=', now())
-                    ->paginate(9);
-            }
+           } else {
+
+               if ( !empty($search) ) {
+                   // Si no hay título, solo aplica el orden
+                   $posts = Post::query()
+                       ->where('published_at', '<=', now())
+                       ->where('category_id', '=', $category )
+                       ->where('title', 'like', "%$search%")
+                       ->paginate(9);
+               } else {
+                   // Si no hay título, solo aplica el orden
+                   $posts = Post::query()
+                       ->where('published_at', '<=', now())
+                       ->where('category_id', '=', $category )
+                       ->paginate(9);
+               }
+
+           }
         }
 
         //dd($posts);
 
-        return view('posts.index', compact('posts'));
+        return view('posts.index', compact('posts', 'categories'));
     }
 
     public function show(Post $post)
